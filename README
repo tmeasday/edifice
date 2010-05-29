@@ -29,6 +29,8 @@ document.load:
 suppose we then subsequently load users/edit via ajax, in the layout xhr. Then the following events will fire:
 	- usersEdit.onAjaxComplete
 	- layoutsXhr.onAjaxComplete
+	- usersShow.onAjaxComplete
+	- layoutsApplication.onAjaxComplete
 	- [widgets are loaded]
 	- usersEdit.onWidgetReady
 	- layoutsXhr.onWidgetReady
