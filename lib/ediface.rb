@@ -8,11 +8,14 @@ module Ediface
   
   module Controller
     def self.included(controller)
-      controller.after_filter(:write_ediface_headers)
       controller.helper_method(:view_path, :view_path_normalized, 
         :view_name, :view_name_normalized, :layout_name)
-        
-      controller.alias_method_chain :render_for_file, :ediface
+      
+      # don't get me started on actionmailer
+      unless (controller == ActionMailer::Base)
+        controller.after_filter(:write_ediface_headers)
+        controller.alias_method_chain :render_for_file, :ediface
+      end
     end
     
     def render_for_file_with_ediface(template_path, status = nil, layout = nil, locals = {})
@@ -45,7 +48,11 @@ module Ediface
     end
     
     def layout_name
-      response.layout.nil? ? 'no_layout' : File.split(response.layout).last
+      if defined?(response) and !response.layout.nil? 
+        File.split(response.layout).last
+      else
+        'no_layout'
+      end
     end
   end
 end

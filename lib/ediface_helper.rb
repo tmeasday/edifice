@@ -3,7 +3,7 @@ module EdifaceHelper
   def ediface_meta_tags
     "<meta name='ediface.view_path' content='#{view_path_normalized}'/>" + 
     "<meta name='ediface.view_name' content='#{view_name_normalized}'/>" +
-    "<meta name='ediface.layout' content='#{layout_name}'/>" unless layout_name.nil?
+    "<meta name='ediface.layout' content='#{layout_name}'/>"
   end
   
   # the default classes that get added to the body element when a view renders
