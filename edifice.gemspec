@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Tom Coleman", "Zoltan Olah", "Joe Dollard"]
   s.email       = ["tom@thesnail.org", "zol@me.com", "jdollard@gmail.com"]
-  s.homepage    = ""
+  s.homepage    = "http://github.com/tmeasday/edifice"
   s.summary     = %q{Ediface is a Javascript framework released as a rails plugin.}
   s.description = %q{The idea here is to communicate which view is rendering to the javascript so that we can call the correct javascript files in an automagical way.}
 
