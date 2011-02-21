@@ -1,3 +1,5 @@
+require 'edifice_helper'
+
 module Edifice
   def self.install_js_files
     install_dir = ::Rails.application.paths.public.javascripts.first
@@ -52,3 +54,7 @@ module Edifice
     end
   end
 end
+
+ActionController::Base.send :include, Edifice::Controller
+# ActionMailer::Base.send :include, Edifice::Controller
+ActionView::Base.send :include, EdificeHelper
