@@ -1,7 +1,7 @@
-Ediface
+Edifice
 =======
 
-	Ediface is a Javascript framework released as a rails plugin.
+	Edifice is a Javascript framework released as a rails plugin.
 
 
 framework.js + associated helpers
@@ -10,7 +10,7 @@ framework.js + associated helpers
 The idea here is to communicate which view is rendering to the javascript so that we can call the correct javascript files in an automagical way.
 
 All you need to do is add
-	<%= ediface_meta_tags %>
+	<%= edifice_meta_tags %>
 to your layout, in the head.
 
 Then if you render an action, such as users/show, in the layout application, these functions[if they exist] will be fired on these js objects in the following order:
