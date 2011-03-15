@@ -22,7 +22,7 @@ module Edifice
     def _render_template_with_edifice(options)
       @view_path = options[:prefix]
       @view_name = options[:template]
-      @layout = File.split(options[:layout]).last
+      @layout = options[:layout] ? File.split(options[:layout]).last : nil
       
       _render_template_without_edifice(options)
     end
