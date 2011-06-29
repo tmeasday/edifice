@@ -1,4 +1,6 @@
-require 'edifice_helper'
+require 'edifice/helper'
+require 'edifice/form_model'
+require 'edifice/responder'
 
 module Edifice
   def self.install_js_files
@@ -16,6 +18,12 @@ module Edifice
       unless (controller == ActionMailer::Base)
         controller.after_filter(:write_edifice_headers)
         controller.alias_method_chain(:_render_template, :edifice)
+      end
+      
+      controller.class_eval do
+        def self.responder
+          Edifice::Responder
+        end
       end
     end
     
@@ -57,4 +65,4 @@ end
 
 ActionController::Base.send :include, Edifice::Controller
 # ActionMailer::Base.send :include, Edifice::Controller
-ActionView::Base.send :include, EdificeHelper
+ActionView::Base.send :include, Edifice::Helper
