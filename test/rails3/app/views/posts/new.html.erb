@@ -1,5 +1,5 @@
 <h1>Edit your Post</h1>
-<%= form_for @post, :html => {:'data-widget' => 'ajax_form', :'data-widget-dataType' => 'json', 
+<%= form_for @post, :html => {:'data-widget' => 'form', :'data-widget-ajax' => false, 
       :'data-widget-validators' => ActiveSupport::JSON.encode({'#post_title' => 'not_empty'})} do |f| %>
   <%= f.label :email %>
   <%= f.error_message_on :email %>

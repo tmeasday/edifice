@@ -38,7 +38,7 @@ module Rails3
 
     # JavaScript files you want as :defaults (application.js is always included).
     config.action_view.javascript_expansions[:defaults] = %w(
-      jquery-1.5.1 edifice/framework edifice/form edifice/ajax_form
+      jquery-1.5.1 edifice/framework edifice/edifice_form edifice/form
     )
 
     # Configure the default encoding used in templates for Ruby 1.9.
