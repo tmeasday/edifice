@@ -9,6 +9,7 @@ module Edifice
     install_dir = ::Rails.application.paths.public.javascripts.first
     edifice_js_dir = File.join(File.dirname(__FILE__), 'public', 'javascripts', 'edifice')
     
+    FileUtils.rm_r File.join(install_dir, 'edifice')
     FileUtils.cp_r edifice_js_dir, install_dir
   end
   
