@@ -10,7 +10,7 @@ module Edifice
     # the default classes that get added to the body element when a view renders
     # the c_ in front of view_path is for historical reasons
     def edifice_body_classes
-      %(c_#{view_path} v_#{view_name} l_#{layout_name}").html_safe
+      %(c_#{view_path} v_#{view_name} l_#{layout_name}).html_safe
     end
   end
 end
