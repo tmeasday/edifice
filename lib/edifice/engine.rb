@@ -2,7 +2,7 @@ require 'edifice'
 require 'rails'
 
 module Edifice
-  class Railtie < Rails::Railtie
+  class Engine < Rails::Engine
     rake_tasks do
       load "tasks/edifice.rake"
     end
