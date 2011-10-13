@@ -14,18 +14,38 @@ jQuery.noConflict();
 */
 (function($){
   /**
+   * Extract the view_path/name and layout from the meta tags (as put down by Edifice::Helper::edifice_meta_tags)
+   *
+   */
+  function extract_page_details_from_meta_tags() {
+    return {
+      view_path: $('meta[name=edifice-view_path]').attr('content'),
+      view_name: $('meta[name=edifice-view_name]').attr('content'),
+      layout: $('meta[name=edifice-layout]').attr('content')
+    };
+  }
+  /**
    * Runs an 'event method' on a view object and a layout object defined by meta tags
    * we specially set in every layout.
    * 
    * @param {String} methodName The method to call on the view object corresponding to event that's happening.
    */
   function page_level_hookup(methodName) {
-    var view_path = $('meta[name=edifice-view_path]').attr('content');
-    var view_name = $('meta[name=edifice-view_name]').attr('content');    
-    var layout    = $('meta[name=edifice-layout]').attr('content');
-    
-    hookup(methodName, view_path, view_name, layout);
+    hookup(methodName, extract_page_details_from_meta_tags());
   };
+  
+  /**
+   * Extract the view_path/name and layout from the headers of an ajax request
+   *
+   * @param {XMLHttpRequest} request The ajax request
+   */
+  function extract_page_details_from_ajax(request) {
+    return {
+      view_path: request.getResponseHeader('x-edifice-view_path'),
+      view_name: request.getResponseHeader('x-edifice-view_name'),
+      layout: request.getResponseHeader('x-edifice-layout')
+    };
+  }
 
   /**
    * Runs an 'event method' on a view object and a layout object defined by the headers
@@ -35,11 +55,7 @@ jQuery.noConflict();
    * @param {XMLHttpRequest} request The returning ajax request.
    */  
   function ajax_hookup(methodName, request) {
-    var view_path = request.getResponseHeader('x-edifice-view_path');
-    var view_name = request.getResponseHeader('x-edifice-view_name');
-    var layout    = request.getResponseHeader('x-edifice-layout');
-    
-    hookup(methodName, view_path, view_name, layout);
+    hookup(methodName, extract_page_details_from_ajax(request));
   }
   
   /**
@@ -48,11 +64,12 @@ jQuery.noConflict();
    * Will call annosList.onLoad() and layoutsApplication.onLoad() if they exist.
    * 
    * @param {String} methodName The method to call on the view object corresponding to event that's happening.
-   * @param {String} view_path The camelcased path to the view, often the same as the controller name.
-   * @param {String} view_name The name of the view being rendered.
-   * @param {String} layout The layout being used. If there is no layout this is 'no_layout'
+   * @param {Object} page_details The page details as returned by extract_page_details_from methods. Contains:
+   *   view_path The camelcased path to the view, often the same as the controller name.
+   *   view_name The name of the view being rendered.
+   *   layout The layout being used. If there is no layout this is 'no_layout'
    */
-  function hookup(methodName, view_path, view_name, layout) {
+  function hookup(methodName, page_details) {
     //capitalize the first character in a string
     function capitalize_first_chr(str) {
       if ((typeof(str) == 'undefined') || (str.length == 0)) {
@@ -63,9 +80,9 @@ jQuery.noConflict();
     }
     
     // sometimes, on errors, etc these may not be set
-    view_path = view_path || 'no_controller';
-    view_name = view_name || 'no_view'
-    layout = layout || 'no_layout'
+    var view_path = page_details.view_path || 'no_controller',
+      view_name = page_details.view_name || 'no_view',
+      layout = page_details.layout || 'no_layout';
     
     hookup_once(view_path + capitalize_first_chr(view_name), methodName); // hookup the view    
     hookup_once('layouts' + capitalize_first_chr(layout), methodName);
@@ -84,11 +101,34 @@ jQuery.noConflict();
       }
     }
   };
-
+  
+  /**
+   * Updates classes set on the body tag (as set by Edifice::Helper::edifice_body_classes), 
+   * and meta tags (as set by Edifice::Helper::edifice_meta_tags)
+   *
+   * @param {Object} page_details The page details as used in hookup above.
+   */
+  function update_page_details(page_details) {
+    function ucc(string) {
+      return string.replace(/([A-Z])/g, '_$1').toLowerCase();
+    }
+    
+    $('meta[name=edifice-view_path]').attr('content', page_details.view_path);
+    $('meta[name=edifice-view_name]').attr('content', page_details.view_name);
+    $('meta[name=edifice-layout]').attr('content', page_details.layout);
+    
+    $('body').attr('class', function(i, classes) {
+      // remove any other classes beginning with c_, v_ or l_
+      classes = classes.replace(/[cvl]_.*/g, '')
+      return classes + ' c_' + ucc(page_details.view_path) +
+        ' v_' + ucc(page_details.view_name) + ' l_' + ucc(page_details.layout);
+    });
+  }
+  
   //when the dom is ready
   $(document).ready(function() {
     page_level_hookup('onReady');
-    $.attach_widgets();
+    $('body').attach_widgets().attach_traits();
     page_level_hookup('onWidgetsReady');
     $(document).trigger('widgetsReady');
   });
@@ -103,31 +143,74 @@ jQuery.noConflict();
     $('body').ajaxComplete(function(event, request) {
       ajax_hookup('onAjaxComplete', request);
       page_level_hookup('onAjaxComplete');
-      $.attach_widgets();
+      $('body').attach_widgets().attach_traits();
       ajax_hookup('onWidgetsReady', request);
       page_level_hookup('onWidgetsReady');
       $(document).trigger('widgetsReady');
     });    
+
+    // special code for dealing with pjax requests
+    $('body').bind('pjax:end', function(event, request) {
+      // we need to update any body classes based on the request headers
+      update_page_details(extract_page_details_from_ajax(request));
+    });
   });
   
+  // *********** EDIFICE TRAIT CODE ************ //
   
+  /**
+    @name $.edifice_traits 
+    @namespace 
+    @description Traits live here.
+   */
+  $.edifice_traits = {};
   
-  // *********** EDIFICE WIDGET CODE *********** //
+  /**
+   *  Runs $.edifice.traits.X on all contained elements with data-trait containing X
+   *
+   * @param {Boolean} Reset the checks to see if things have already been attached
+   *                   [use this if you have clone an element without copying events]
+   *
+   *  Records which elements have already been 'traited' via data-trait-attached
+   */
+  $.fn.attach_traits = function(reset) {
+    if (reset) { this.find('[data-trait]').removeAttr('data-trait-attached'); }
     
+    for (trait in $.edifice_traits) {
+      var $els = this.find('[data-trait~=' + trait + ']:not([data-trait-attached~=' + trait + '])');
+      $els.attr('data-trait-attached', function(i, val) { 
+        return (val ? val + ' ' : '') + trait; 
+      });
+      $.edifice_traits[trait].call($els);
+    }
+    return this;
+  }
+  
+
+  // *********** EDIFICE WIDGET CODE *********** //
+
   /**
     @name $.edifice_widgets 
     @namespace 
     @description Our widgets live here.
    */
   $.edifice_widgets = {};
-  
+
   /**
    * Runs attach_widget() on any widget found in the html which isn't already attached.
+   *
+   * @param {Boolean} Reset the checks to see if things have already been attached
+   *                   [use this if you have clone an element without copying events]
+   *
    */  
-  $.attach_widgets = function() {
-   $('[data-widget]:not([data-widget-attached])').attach_widget();
+  $.fn.attach_widgets = function(reset) {
+    if (reset) { this.find('[data-widget]').removeAttr('data-widget-attached'); }
+
+    this.find('[data-widget]:not([data-widget-attached])').attach_widget();
+
+    return this;
   };
-  
+
   /**
    * Call $.WIDGET_NAME on the matched elements where WIDGET_NAME is set in the
    * data-widget attribute.
