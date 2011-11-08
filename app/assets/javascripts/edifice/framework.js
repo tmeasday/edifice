@@ -125,7 +125,9 @@ jQuery.noConflict();
     });
   }
   
-  //when the dom is ready
+  // when the dom is ready
+  //  - tell the page that it's ready
+  //  - then tell the page that widgets have loaded
   $(document).ready(function() {
     page_level_hookup('onReady');
     $('body').attach_widgets().attach_traits();
@@ -133,22 +135,25 @@ jQuery.noConflict();
     $(document).trigger('widgetsReady');
   });
   
-  //when the page is fully loaded (all frames, images, etc)
+  // when the page is fully loaded (all frames, images, etc)
   $(window).load(function() {
     page_level_hookup('onLoad');
   });
   
-  //after every ajax request
+  // after every ajax request
+  //  - treat the ajax'ed page as if it's loaded normally
+  //  - tell the original page that some ajax has happened
+  //  - tell both pages that new widgets may have loaded
   $(function() {
     $('body').ajaxComplete(function(event, request) {
-      ajax_hookup('onAjaxComplete', request);
+      ajax_hookup('onReady', request);
       page_level_hookup('onAjaxComplete');
       $('body').attach_widgets().attach_traits();
       ajax_hookup('onWidgetsReady', request);
       page_level_hookup('onWidgetsReady');
       $(document).trigger('widgetsReady');
-    });    
-
+    });
+    
     // special code for dealing with pjax requests
     $('body').bind('pjax:end', function(event, request) {
       // we need to update any body classes based on the request headers
