@@ -5,12 +5,14 @@ module Edifice
     include ActiveModel::Validations
     include ActiveModel::Conversion
     extend  ActiveModel::Naming
+    extend ActiveModel::Callbacks
+    define_model_callbacks :save
     
     # more or less the same as activerecord's one
     class RecordInvalid < Exception
       attr_reader :record
       def initialize(record)
-        @model = record
+        @record = record
         errors = @record.errors.full_messages.join(", ")
         super(errors)
       end
@@ -22,7 +24,9 @@ module Edifice
     
     # default implementation, override as necessary
     def save
-      valid?
+      run_callbacks :save do
+        valid?
+      end
     end
     
     def save!
