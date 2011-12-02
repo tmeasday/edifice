@@ -119,7 +119,7 @@ jQuery.noConflict();
     
     $('body').attr('class', function(i, classes) {
       // remove any other classes beginning with c_, v_ or l_
-      classes = classes.replace(/[cvl]_.*/g, '')
+      classes = classes.replace(/[cvl]_\w*/g, '')
       return classes + ' c_' + ucc(page_details.view_path) +
         ' v_' + ucc(page_details.view_name) + ' l_' + ucc(page_details.layout);
     });
