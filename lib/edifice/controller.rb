@@ -8,12 +8,6 @@ module Edifice
       unless (controller == ActionMailer::Base)
         controller.after_filter(:write_edifice_headers)
       end
-      
-      controller.class_eval do
-        def self.responder
-          Edifice::Responder
-        end
-      end
     end
     
     # this will get called once per template. So we make sure it only writes for the first

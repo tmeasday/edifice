@@ -1,8 +1,6 @@
 require 'edifice/helper'
 require 'edifice/controller'
 require 'edifice/renderer'
-require 'edifice/form_model'
-require 'edifice/responder'
 
 module Edifice
   require 'edifice/engine' if defined?(Rails)
