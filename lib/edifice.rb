@@ -1,3 +1,8 @@
+require 'edifice/controller'
+require 'edifice/helper'
+require 'edifice/renderer'
+
+
 module Edifice
   require 'edifice/engine' if defined?(Rails)
 end

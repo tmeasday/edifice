@@ -1,5 +1,4 @@
 module Edifice
-  
   module Controller
     def self.included(controller)
       controller.helper_method(:view_path, :view_path_normalized, 
