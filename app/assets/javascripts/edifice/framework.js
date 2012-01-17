@@ -130,9 +130,6 @@ jQuery.noConflict();
   //  - then tell the page that widgets have loaded
   $(document).ready(function() {
     page_level_hookup('onReady');
-    $('body').attach_widgets().attach_traits();
-    page_level_hookup('onWidgetsReady');
-    $(document).trigger('widgetsReady');
   });
   
   // when the page is fully loaded (all frames, images, etc)
@@ -143,15 +140,10 @@ jQuery.noConflict();
   // after every ajax request
   //  - treat the ajax'ed page as if it's loaded normally
   //  - tell the original page that some ajax has happened
-  //  - tell both pages that new widgets may have loaded
   $(function() {
     $('body').ajaxComplete(function(event, request) {
       ajax_hookup('onReady', request);
       page_level_hookup('onAjaxComplete');
-      $('body').attach_widgets().attach_traits();
-      ajax_hookup('onWidgetsReady', request);
-      page_level_hookup('onWidgetsReady');
-      $(document).trigger('widgetsReady');
     });
     
     // special code for dealing with pjax requests
@@ -160,142 +152,4 @@ jQuery.noConflict();
       update_page_details(extract_page_details_from_ajax(request));
     });
   });
-  
-  // *********** EDIFICE TRAIT CODE ************ //
-  
-  /**
-    @name $.edifice_traits 
-    @namespace 
-    @description Traits live here.
-   */
-  $.edifice_traits = {};
-  
-  /**
-   *  Runs $.edifice.traits.X on all contained elements with data-trait containing X
-   *
-   * @param {Boolean} Reset the checks to see if things have already been attached
-   *                   [use this if you have clone an element without copying events]
-   *
-   *  Records which elements have already been 'traited' via data-trait-attached
-   */
-  $.fn.attach_traits = function(reset) {
-    if (reset) { this.find('[data-trait]').removeAttr('data-trait-attached'); }
-    
-    for (trait in $.edifice_traits) {
-      var $els = this.find('[data-trait~=' + trait + ']:not([data-trait-attached~=' + trait + '])');
-      $els.attr('data-trait-attached', function(i, val) { 
-        return (val ? val + ' ' : '') + trait; 
-      });
-      $.edifice_traits[trait].call($els);
-    }
-    return this;
-  }
-  
-
-  // *********** EDIFICE WIDGET CODE *********** //
-
-  /**
-    @name $.edifice_widgets 
-    @namespace 
-    @description Our widgets live here.
-   */
-  $.edifice_widgets = {};
-
-  /**
-   * Runs attach_widget() on any widget found in the html which isn't already attached.
-   *
-   * @param {Boolean} Reset the checks to see if things have already been attached
-   *                   [use this if you have clone an element without copying events]
-   *
-   */  
-  $.fn.attach_widgets = function(reset) {
-    if (reset) { this.find('[data-widget]').removeAttr('data-widget-attached'); }
-
-    this.find('[data-widget]:not([data-widget-attached])').attach_widget();
-
-    return this;
-  };
-
-  /**
-   * Call $.WIDGET_NAME on the matched elements where WIDGET_NAME is set in the
-   * data-widget attribute.
-   *
-   * @param {Object} extra_options Use these options in addition to those specified
-   * in the html as data-widget-OPTION_NAME=VALUE
-   *
-   * @throws {Exception} If a widget has already been attached.
-   * @throws {Exception} If the type of widget doesn't exist.
-   */
-  $.fn.attach_widget = function(extra_options) {
-    return this.each(function() {
-      var $e = $(this), fn_name = $e.attr('data-widget');
-
-      // error checking
-      if ($e.attr('data-widget-attached')) {
-        throw('attach_widget called on already attached widget.');
-      }
-      if (!(fn_name in $.edifice_widgets)) {
-        throw("edifice widget '" + fn_name + "'   is not defined.");
-      }
-
-      // attach extra options to the widget
-      if (typeof(extra_options) != 'undefined') {
-        $.each(extra_options, function(name, def) {
-          $e.data('widget-' + name, def);
-        });      
-      }
-
-      // load the widget up
-      $.edifice_widgets[fn_name].call($e);
-      $e.attr('data-widget-attached', true);
-    });
-  };
-  
-  /**
-   * Make a widget out of an element which doesn't already have data-widget set
-   * in the html.
-   *
-   * @param {String} Type Type of widget, e.g 'ajax_form'
-   * @param {Object} Options for widget.
-   */
-  $.fn.create_widget = function(type, options) {
-    return $(this).attr('data-widget', type).attach_widget(options);
-  };
-    
-  /**
-   * @constant
-   */
-  $.edifice_widgets.REQUIRED = '*** VALUE REQUIRED ***';
-  
-  /**
-   * Read the set of options attached to a widget via data-widget-OPTION_NAME
-   * in the html.
-   *
-   * @param {Object} defaults Specifies the names and default values of 
-   * applicable options. Set default value to $.edifice_widgets.REQUIRED to indicate
-   * a mandatory value.
-   *
-   * @returns {Object} The options calculated.
-   *
-   * @throws {Exception} If a required option is not found.
-   */  
-  $.fn.read_options = function(defaults) {
-    var that = this;
-    var options = {};
-    $.each(defaults, function(name, def) {
-      var val = that.data('widget-' + name) || that.attr('data-widget-' + name);
-      
-      if (val) {
-        options[name] = val;
-      } else {
-        if (def === $.edifice_widgets.REQUIRED) {
-          throw("Widget argument required: " + name);
-        }
-        
-        options[name] = def;
-      }
-    });
-    
-    return options;
-  }
 }(jQuery));
