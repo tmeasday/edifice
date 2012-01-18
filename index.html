@@ -16,10 +16,7 @@
 
 <body>
   	<div id="content">
-
-	  	<a class="logo" href="http://github.com/tmeasday/edifice">
-  	  	<img src="images/logo_edifice_80x93.png" alt="VISIT EDIFICE ON GITHUB" />
-	  	</a>
+	  	<a class="logo" href="http://github.com/tmeasday/edifice"><img src="images/logo_edifice_80x93.png" alt="VISIT EDIFICE ON GITHUB" /></a>
 
   	  <div class="pitch">
       	<h1><span class="hero">Edifice:</span><span class="tagline">CSS &amp; JS the Rails way</span></h1>
@@ -53,8 +50,8 @@ gem 'edifice'
 <body class="c_users v_show l_application">
 {% endhighlight %}
     	  
-    	  <img src="images/icon_page_120x120.png" alt="Page-level JS" class="page" />
-    	  <div class="padded">
+    	  <div class="point">
+      	  <img src="images/icon_page_120x120.png" alt="Page-level JS" class="page" />
       	  <h3 class="subtitle color">Page-level Javascript</h3>
       	  <p>Condensing your sites javascript assets into one master file is a performance requirement these days. It gets pretty confusing when you only want to run certain bits of code on different pages. Edifice solves this problem by enabling view specific JS.</p>
       	  <span>Just add:</span>
@@ -69,8 +66,8 @@ userShow = {
     	    <p>The rest will be taken care of.</p>
   	    </div>
   	    
-  	    <img src="images/icon_globe_120x120.png" alt="Global JS Widgets" class="globe" />
-  	    <div class="padded">
+  	    <div class="point">
+    	    <img src="images/icon_globe_120x120.png" alt="Global JS Widgets" class="globe" />
     	    <h3 class="subtitle color">Site-wide Javascript</h3>
     	    <p>Reluctant to separate your JS by views? 
     	      <a href="https://github.com/tmeasday/edifice-widgets">Edifice-widgets</a>
@@ -85,12 +82,12 @@ userShow = {
 <input type="text" name="zipcode" data-trait="only_allow_numbers">
 {% endhighlight %}
             	    
-          We'll take care of the rest (you'll have to tell us what a <code>styled_select</code> is and what <code>only_allow_numbers</code> means).
+          <p>We'll take care of the rest (you'll have to tell us what a <code>styled_select</code> is and what <code>only_allow_numbers</code> means).</p>
   	    </div>
   	    
-  	    
-  	    <img src="images/icon_check_120x120.png" alt="Simple forms with Edifice" class="check" /> 
-  	    <div class="padded">
+
+  	    <div class="point">  	    
+    	    <img src="images/icon_check_120x120.png" alt="Simple forms with Edifice" class="check" /> 
     	    <h3 class="subtitle color">Avoid form boilerplate</h3>
     	    <p>Tired of writing standard code to deal with form errors? Wondering why rails' unobtrusive remote form's don't handle it for you? Let
     	      <a href="https://github.com/tmeasday/edifice-forms">edifice-forms</a> help you out:</p>
@@ -100,9 +97,10 @@ userShow = {
 <form data-remote="true" data-form="show_errors">
 {% endhighlight %}
   
-          <span>And things will work just as you might expect.</span>
+          <p>And things will work just as you might expect.</p>
         </div>
         
+      <div class="point nomargin">
   	    <h3 class="subtitle color">Easy non-persistent forms</h3>
   	    <p>Need a form that's not based on a DB-backed model? Still want to validate fields and write simple controllers? Yep, edifice-forms can help with that too:</p>
   	    <span>Just add:</span>
@@ -130,6 +128,7 @@ end
 {% highlight erb %}
   <%= form_for @feedback do |f| %>
 {% endhighlight %}
+</div>
       <img src="images/icon_rails_120x120.png" alt="Rails 3+" class="rails" />  	      	    
       <p class="colophon">Edifice is crafted by <a href="http://percolatestudio.com">Percolate Studio</a> and released under the <a href="http://www.opensource.org/licenses/MIT">MIT license</a></p>
       </div>
