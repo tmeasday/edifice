@@ -22,7 +22,7 @@ And you are now free to namespace your CSS like so:
 
 Of course this namespacing works best with a CSS-preprocessor like [SCSS](http://sass-lang.com/):
 
-```css
+```scss
 .c_users.v_show {
   h1 {
     background-color: red;
