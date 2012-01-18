@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,67 +29,104 @@
     	</div>
     	<div class="explain">
     	  <h2>But really now, what is Edifice?</h2>
-    	  <p><span class="color"><strong>Edifice is a Rails gem</strong></span> that simplifies the way you manage your CSS and Javascript. Install it by typing <code>gem install edifice</code></p>
-    	  
-    	  
-    	  <img src="" alt="" />
+    	  <p><span class="color"><strong>Edifice is a Rails gem</strong></span> that simplifies the way you manage your CSS and Javascript. Add it to your <code>Gemfile</code>:
+  	    </p>
+{% highlight ruby %}
+gem 'edifice'
+{% endhighlight %}    	    
     	  
     	  
     	  <h3 class="subtitle color">Namespacing CSS</h3>
-    	  <p>Automatically generate a namespace for each of your views. Use it to fine tune styling on a page-by-page basis without worrying about altering your global names. After all thinking of names is hard, why not just use the view's name? Let <a href="https://github.com/tmeasday/edifice">edifice</a> do it for you:</p>
-    	  <span>Before:</span>
-    	  <pre>&lt;div id="user_profile"&gt;&lt;/div&gt;</pre>
-    	  <span>After:</span>
-    	  <pre>&lt;body class="c_users v_show l_application"&gt;</pre>
+    	  <p>Automatically generate a namespace for each of your views. Use it to fine tune styling on a page-by-page basis without worrying about altering your global names. After all thinking of names is hard, why not just use the view's name? Let <a href="https://github.com/tmeasday/edifice">edifice</a> handle that for you:</p>
+    	  <span>Rather than:</span>
+{% highlight html %}
+<body id="user_profile">
+{% endhighlight %}
+    	  
+    	  <span>Do:</span>
+{% highlight erb %}
+<body class="<%= edifice_body_classes %>">
+{% endhighlight %}
+      	
+      	<span>And you'll see something like:</span>
+{% highlight html %}
+<body class="c_users v_show l_application">
+{% endhighlight %}
     	  
     	  
     	  
     	  <h3 class="subtitle color">Page-level Javascript</h3>
     	  <p>Condensing your sites javascript assets into one master file is a performance requirement these days. It gets pretty confusing when you only want to run certain bits of code on different pages. Edifice solves this problem by enabling view specific JS.</p>
     	  <span>Just add:</span>
-    	  <pre>userShow = {
-    	    onReady: function() {
-    	      alert('The users#show page is ready!');
-    	    }
-    	  }</pre>
+{% highlight js %}
+userShow = {
+  onReady: function() {
+    alert('The users#show page is ready!');
+  }
+}
+{% endhighlight %}
+
   	    <p>The rest will be taken care of.</p>
   	    
   	    
   	    <h3 class="subtitle color">Site-wide Javascript</h3>
-  	    <p>Reluctant to separate your JS by views? Build Edifice widgets &amp; traits to unobtrusively hook up standard behaviors for you</p>
+  	    <p>Reluctant to separate your JS by views? 
+  	      <a href="https://github.com/tmeasday/edifice-widgets">Edifice-widgets</a>
+  	       &amp; traits unobtrusively hook up standard behaviors for you</p>
   	    <span>Just add:</span>
-  	    <pre>&lt;select name="country" data-widget="styled_select"&gt;&lt;option&gt;&lt;/select&gt;<br/>&lt;input type="text" name="zipcode" data-trait="only_allow_numbers"&gt;&lt;/input&gt;</pre>
+{% highlight erb %}
+<select name="country" data-widget="styled_select">
+{% endhighlight %}
+
+<span>Or:</span>
+{% highlight erb %}
+<input type="text" name="zipcode" data-trait="only_allow_numbers">
+{% endhighlight %}
   	    
-  	    
+We'll take care of the rest (you'll have to tell us what a <code>styled_select</code> is and what <code>only_allow_numbers</code> means).
   	    
   	    <h3 class="subtitle color">Avoid form boilerplate</h3>
-  	    <p>Tired of writing standard code to deal with form errors? Wondering why rails' unobtrusive remote form's don't handle it for you? Let (edifice-forms)[https://github.com/tmeasday/edifice-forms] help you out:</p>
+  	    <p>Tired of writing standard code to deal with form errors? Wondering why rails' unobtrusive remote form's don't handle it for you? Let
+  	      <a href="https://github.com/tmeasday/edifice-forms">edifice-forms</a> help you out:</p>
   	    <span>Just add:</span>
-  	    <pre>&lt;form data-remote="true" data-form="show_errors"&gt;</pre>
-  	    
-  	    
+
+{% highlight html %}
+<form data-remote="true" data-form="show_errors">
+{% endhighlight %}
+
+<span>And things will work just as you might expect.</span>
+
   	    <h3 class="subtitle color">Easy non-persistent forms</h3>
-  	    <p>Need a form that's not based on a DB-backed model? Still want to validate fields and write simple controllers? Yep, (edifice-forms)[https://github.com/tmeasday/edifice-forms] can help with that:</p>
+  	    <p>Need a form that's not based on a DB-backed model? Still want to validate fields and write simple controllers? Yep, edifice-forms can help with that too:</p>
   	    <span>Just add:</span>
-  	    <pre>class Feedback &lt; Edifice::Forms::FormModel
+{% highlight ruby %}
+class Feedback < Edifice::Forms::FormModel
   attr_accessor :message
   attr_accessor :email
-  	    
+
   validates :email, :presence =&gt; true, :format =&gt; {:with =&gt; /^.+@.+\..+$/}
   validates :message, :presence =&gt; true
-  	    
+
   def save
     SelfMailer.feedback(self).deliver
   end
 end
 
-class FeedbacksController &lt; ApplicationController
+class FeedbacksController < ApplicationController
   def create
     respond_with @feedback = Feedback.create params[:feedback]
   end
 end
-&lt;%= form_for @feedback do |f|</pre>
-  	      	    
+{% endhighlight %}
+
+  In your views, <code>@feedback</code> is just like a normal model:
+{% highlight erb %}
+  <%= form_for @feedback do |f| %>
+{% endhighlight %}
+
+<p>Edifice is crafted by <a href="http://percolatestudio.com">Percolate Studio</a> and released under the <a href="www.opensource.org/licenses/MIT">MIT license</a></p></div></div>
+    </div>
+  </div>
     	</div>
   	</div>
 </body>
