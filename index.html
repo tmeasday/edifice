@@ -1,5 +1,3 @@
----
----
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,103 +30,107 @@
     	  <h2>But really now, what is Edifice?</h2>
     	  <p><span class="color"><strong>Edifice is a Rails gem</strong></span> that simplifies the way you manage your CSS and Javascript. Add it to your <code>Gemfile</code>:
   	    </p>
-{% highlight ruby %}
-gem 'edifice'
-{% endhighlight %}    	    
-    	  
+        {% highlight ruby %}
+        gem 'edifice'
+        {% endhighlight %}    	    
     	  
     	  <h3 class="subtitle color">Namespacing CSS</h3>
     	  <p>Automatically generate a namespace for each of your views. Use it to fine tune styling on a page-by-page basis without worrying about altering your global names. After all thinking of names is hard, why not just use the view's name? Let <a href="https://github.com/tmeasday/edifice">edifice</a> handle that for you:</p>
     	  <span>Rather than:</span>
-{% highlight html %}
-<body id="user_profile">
-{% endhighlight %}
+        {% highlight html %}
+        <body id="user_profile">
+        {% endhighlight %}
     	  
     	  <span>Do:</span>
-{% highlight erb %}
-<body class="<%= edifice_body_classes %>">
-{% endhighlight %}
+        {% highlight erb %}
+        <body class="<%= edifice_body_classes %>">
+        {% endhighlight %}
       	
       	<span>And you'll see something like:</span>
-{% highlight html %}
-<body class="c_users v_show l_application">
-{% endhighlight %}
+        {% highlight html %}
+        <body class="c_users v_show l_application">
+        {% endhighlight %}
     	  
-    	  
-    	  
-    	  <h3 class="subtitle color">Page-level Javascript</h3>
-    	  <p>Condensing your sites javascript assets into one master file is a performance requirement these days. It gets pretty confusing when you only want to run certain bits of code on different pages. Edifice solves this problem by enabling view specific JS.</p>
-    	  <span>Just add:</span>
-{% highlight js %}
-userShow = {
-  onReady: function() {
-    alert('The users#show page is ready!');
-  }
-}
-{% endhighlight %}
-
-  	    <p>The rest will be taken care of.</p>
+    	  <img src="images/icon_page_120x120.png" alt="Page-level JS" class="page" />
+    	  <div class="padded">
+      	  <h3 class="subtitle color">Page-level Javascript</h3>
+      	  <p>Condensing your sites javascript assets into one master file is a performance requirement these days. It gets pretty confusing when you only want to run certain bits of code on different pages. Edifice solves this problem by enabling view specific JS.</p>
+      	  <span>Just add:</span>
+          {% highlight js %}
+          userShow = {
+            onReady: function() {
+              alert('The users#show page is ready!');
+            }
+          }
+          {% endhighlight %}
+  
+    	    <p>The rest will be taken care of.</p>
+  	    </div>
+  	    
+  	    <img src="images/icon_globe_120x120.png" alt="Global JS Widgets" class="globe" />
+  	    <div class="padded">
+    	    <h3 class="subtitle color">Site-wide Javascript</h3>
+    	    <p>Reluctant to separate your JS by views? 
+    	      <a href="https://github.com/tmeasday/edifice-widgets">Edifice-widgets</a>
+    	       &amp; traits unobtrusively hook up standard behaviors for you</p>
+    	    <span>Just add:</span>
+          {% highlight html %}
+          <select name="country" data-widget="styled_select">
+          {% endhighlight %}
+          
+          <span>Or:</span>
+          {% highlight html %}
+          <input type="text" name="zipcode" data-trait="only_allow_numbers">
+          {% endhighlight %}
+            	    
+          We'll take care of the rest (you'll have to tell us what a <code>styled_select</code> is and what <code>only_allow_numbers</code> means).
+  	    </div>
   	    
   	    
-  	    <h3 class="subtitle color">Site-wide Javascript</h3>
-  	    <p>Reluctant to separate your JS by views? 
-  	      <a href="https://github.com/tmeasday/edifice-widgets">Edifice-widgets</a>
-  	       &amp; traits unobtrusively hook up standard behaviors for you</p>
-  	    <span>Just add:</span>
-{% highlight html %}
-<select name="country" data-widget="styled_select">
-{% endhighlight %}
-
-<span>Or:</span>
-{% highlight html %}
-<input type="text" name="zipcode" data-trait="only_allow_numbers">
-{% endhighlight %}
-  	    
-We'll take care of the rest (you'll have to tell us what a <code>styled_select</code> is and what <code>only_allow_numbers</code> means).
-  	    
-  	    <h3 class="subtitle color">Avoid form boilerplate</h3>
-  	    <p>Tired of writing standard code to deal with form errors? Wondering why rails' unobtrusive remote form's don't handle it for you? Let
-  	      <a href="https://github.com/tmeasday/edifice-forms">edifice-forms</a> help you out:</p>
-  	    <span>Just add:</span>
-
-{% highlight html %}
-<form data-remote="true" data-form="show_errors">
-{% endhighlight %}
-
-<span>And things will work just as you might expect.</span>
-
+  	    <img src="images/icon_check_120x120.png" alt="Simple forms with Edifice" class="check" /> 
+  	    <div class="padded">
+    	    <h3 class="subtitle color">Avoid form boilerplate</h3>
+    	    <p>Tired of writing standard code to deal with form errors? Wondering why rails' unobtrusive remote form's don't handle it for you? Let
+    	      <a href="https://github.com/tmeasday/edifice-forms">edifice-forms</a> help you out:</p>
+    	    <span>Just add:</span>
+  
+          {% highlight html %}
+          <form data-remote="true" data-form="show_errors">
+          {% endhighlight %}
+  
+          <span>And things will work just as you might expect.</span>
+        </div>
+        
   	    <h3 class="subtitle color">Easy non-persistent forms</h3>
   	    <p>Need a form that's not based on a DB-backed model? Still want to validate fields and write simple controllers? Yep, edifice-forms can help with that too:</p>
   	    <span>Just add:</span>
-{% highlight ruby %}
-class Feedback < Edifice::Forms::FormModel
-  attr_accessor :message
-  attr_accessor :email
+        {% highlight ruby %}
+        class Feedback < Edifice::Forms::FormModel
+          attr_accessor :message
+          attr_accessor :email
+        
+          validates :email, :presence =&gt; true, :format =&gt; {:with =&gt; /^.+@.+\..+$/}
+          validates :message, :presence =&gt; true
+        
+          def save
+            SelfMailer.feedback(self).deliver
+          end
+        end
+        
+        class FeedbacksController < ApplicationController
+          def create
+            respond_with @feedback = Feedback.create params[:feedback]
+          end
+        end
+        {% endhighlight %}
 
-  validates :email, :presence =&gt; true, :format =&gt; {:with =&gt; /^.+@.+\..+$/}
-  validates :message, :presence =&gt; true
-
-  def save
-    SelfMailer.feedback(self).deliver
-  end
-end
-
-class FeedbacksController < ApplicationController
-  def create
-    respond_with @feedback = Feedback.create params[:feedback]
-  end
-end
-{% endhighlight %}
-
-  In your views, <code>@feedback</code> is just like a normal model:
-{% highlight erb %}
-  <%= form_for @feedback do |f| %>
-{% endhighlight %}
-
-<p>Edifice is crafted by <a href="http://percolatestudio.com">Percolate Studio</a> and released under the <a href="www.opensource.org/licenses/MIT">MIT license</a></p></div></div>
-    </div>
+        In your views, <code>@feedback</code> is just like a normal model:
+        {% highlight erb %}
+          <%= form_for @feedback do |f| %>
+        {% endhighlight %}
+      <img src="images/icon_rails_120x120.png" alt="Rails 3+" class="rails" />  	      	    
+      <p class="colophon">Edifice is crafted by <a href="http://percolatestudio.com">Percolate Studio</a> and released under the <a href="www.opensource.org/licenses/MIT">MIT license</a></p>
+      </div>
   </div>
-    	</div>
-  	</div>
 </body>
 </html>

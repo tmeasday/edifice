@@ -171,7 +171,7 @@ p + pre{
     h2{
       width: 450px;
       height: 26px;
-      margin: 0 auto 18px*2;
+      margin: 0 0 18px*2;
       background: url('images/text_img_really_450x26.png') no-repeat center center;
       text-indent: -999em;
       overflow: hidden;
@@ -185,28 +185,29 @@ p + pre{
     }
     p{ 
       margin-bottom: 1em;
-      img {
-        vertical-align:bottom;
-        max-width: 100%;
-        height: auto;
-        @include border-radius(3px);
-        &.aligncenter{
-          display: block;
-          margin: 10px auto 15px;
-        }
-        &.alignleft{
-          float: left;
-          margin: 10px 0px 15px 0;
-        }
-        &.alignright{
-          float: right;
-          margin: 10px 0 15px 10px;
-        }
-        &.alignnone{
-          margin: 10px 0 15px;
-        }
-      }
       code {font-size:0.9em;}
+      &.colophon{
+        text-align: center;
+        font-size: .8em;
+        color: #999;
+      }
+    }
+    .padded{
+      position: relative;
+      width: 600px- (120px + 18px* 2);
+      float: left;
+      @include clearfix;
+    }
+    img{
+      margin: 1em;
+      &.rails{
+        display: block;
+        margin: 3em auto 1em;
+      }
+      &.globe, &.page, &.check{
+        float: left;
+        margin: 3em 2em 1em 0;
+      } 
     }
     dl{
       margin:19px 0 21px;
