@@ -381,7 +381,7 @@ p + pre {
 #content .explain h2 {
   width: 450px;
   height: 26px;
-  margin: 0 0 36px;
+  margin: 0 auto 36px;
   background: url("images/text_img_really_450x26.png") no-repeat center center;
   text-indent: -999em;
   overflow: hidden;
