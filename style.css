@@ -1,0 +1,477 @@
+/* line 17, ../../../Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* line 20, ../../../Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+body {
+  line-height: 1;
+}
+
+/* line 22, ../../../Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 24, ../../../Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 26, ../../../Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 28, ../../../Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 101, ../../../Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 30, ../../../Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 114, ../../../Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 11, style.scss */
+html {
+  height: 100%;
+}
+
+/* line 14, style.scss */
+body {
+  backgroundround: transparent;
+  text-align: center;
+  color: #333;
+  height: 100%;
+  font-family: Georgia, serif;
+  font-size: 15px;
+  line-height: 1.5em;
+}
+/* line 22, style.scss */
+body #content {
+  text-align: left;
+  min-height: 0;
+}
+/* line 33, stylesheets/include/_helpers.scss */
+body #content:after {
+  clear: both;
+  content: " ";
+  display: block;
+  visibility: hidden;
+  height: 0;
+  font-size: 0;
+}
+
+/* line 27, style.scss */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.5em;
+}
+
+/* line 28, style.scss */
+h1 {
+  font-size: 36px;
+}
+
+/* line 29, style.scss */
+h2 {
+  font-size: 24px;
+}
+
+/* line 30, style.scss */
+h3 {
+  font-size: 21px;
+}
+
+/* line 31, style.scss */
+h4 {
+  font-size: 18px;
+}
+
+/* line 32, style.scss */
+h5 {
+  font-size: 16px;
+}
+
+/* line 33, style.scss */
+h6 {
+  font-size: 14px;
+}
+
+/* line 36, style.scss */
+a, button {
+  outline: none;
+  text-decoration: none;
+  font-size: inherit;
+  font-family: inherit;
+  -moz-transition: color 500ms ease;
+  -webkit-transition: color 500ms ease;
+  -o-transition: color 500ms ease;
+  transition: color 500ms ease;
+  cursor: pointer;
+  color: #66ccff;
+}
+/* line 4, stylesheets/include/links/_textlink.scss */
+a:hover, button:hover {
+  color: #3399ff;
+}
+/* line 5, stylesheets/include/links/_textlink.scss */
+a:active, button:active {
+  color: #555;
+}
+/* line 43, style.scss */
+a.btn, button.btn {
+  text-align: center;
+  padding: .75em 1em;
+  display: inline-block;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+  line-height: 1em;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  background: #ff6633;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  /* line 43, style.scss */
+  a.btn, button.btn {
+    margin-top: 0;
+  }
+}
+/* line 14, stylesheets/include/links/_onset.scss */
+a.btn::-moz-focus-inner, button.btn::-moz-focus-inner {
+  border: 0;
+}
+/* line 52, style.scss */
+a.btn:active, button.btn:active {
+  -moz-box-shadow: rgba(0, 0, 0, 0.3) 0 3px 7px 0 inset;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 3px 7px 0 inset;
+  -o-box-shadow: rgba(0, 0, 0, 0.3) 0 3px 7px 0 inset;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 3px 7px 0 inset;
+}
+
+/* line 57, style.scss */
+input, textarea {
+  font-family: Georgia, serif;
+  moz-appearance: none;
+  -webkit-appearance: none;
+  outline: 0;
+}
+
+/* line 65, style.scss */
+img {
+  -ms-interpolation-mode: bicubic;
+}
+
+/* line 67, style.scss */
+b, strong {
+  font-weight: bold;
+}
+
+/* line 70, style.scss */
+small {
+  font-size: .8em;
+}
+
+/* line 73, style.scss */
+sub, sup {
+  position: relative;
+  font-size: .8em;
+}
+
+/* line 77, style.scss */
+sub {
+  bottom: -0.2em;
+}
+
+/* line 80, style.scss */
+sup {
+  top: -0.2em;
+}
+
+/* line 83, style.scss */
+i, em {
+  font-style: italic;
+}
+
+/* line 86, style.scss */
+u {
+  text-decoration: underline;
+}
+
+/* line 89, style.scss */
+del {
+  text-decoration: line-through;
+}
+
+/* line 92, style.scss */
+blockquote {
+  position: relative;
+  color: #444;
+  clear: both;
+}
+/* line 96, style.scss */
+blockquote p {
+  padding-left: 30px;
+}
+
+/* line 98, style.scss */
+code, kbd, samp, tt, pre {
+  font-family: "Andale Mono", "Monaco", monospace;
+}
+
+/* line 101, style.scss */
+pre {
+  white-space: pre;
+  padding: 10px;
+  font-size: 12px;
+  line-height: 18px;
+  overflow: auto;
+  margin: 9px 0 18px;
+  background: rgba(255, 255, 221, 0.9);
+  border-left: 3px solid #ffff99;
+}
+
+/* line 111, style.scss */
+p + pre {
+  margin: 20px 0 30px;
+}
+
+/* line 114, style.scss */
+.color {
+  color: #ff3300;
+}
+
+/* line 119, style.scss */
+#content {
+  width: 720px;
+  margin: 50px auto;
+  position: relative;
+}
+/* line 123, style.scss */
+#content .logo {
+  font-size: 18px;
+  position: absolute;
+  top: 4em;
+  bottom: auto;
+  left: -120px;
+  right: auto;
+  width: 120px;
+  height: auto;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  padding: 20px;
+  -moz-border-radius: 10px 0 0 10px;
+  -webkit-border-radius: 10px 0 0 10px;
+  -o-border-radius: 10px 0 0 10px;
+  -ms-border-radius: 10px 0 0 10px;
+  -khtml-border-radius: 10px 0 0 10px;
+  border-radius: 10px 0 0 10px;
+  background: #ff6633;
+  -moz-box-shadow: rgba(0, 0, 0, 0.3) -4px 0px 7px -4px inset;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) -4px 0px 7px -4px inset;
+  -o-box-shadow: rgba(0, 0, 0, 0.3) -4px 0px 7px -4px inset;
+  box-shadow: rgba(0, 0, 0, 0.3) -4px 0px 7px -4px inset;
+}
+/* line 132, style.scss */
+#content .pitch {
+  min-height: 0;
+  background: #66ccff;
+  font-size: 18px;
+  line-height: 1.5em;
+  padding: 4em 60px;
+  margin-bottom: 4em;
+}
+/* line 33, stylesheets/include/_helpers.scss */
+#content .pitch:after {
+  clear: both;
+  content: " ";
+  display: block;
+  visibility: hidden;
+  height: 0;
+  font-size: 0;
+}
+/* line 139, style.scss */
+#content .pitch h1 {
+  overflow: hidden;
+}
+/* line 141, style.scss */
+#content .pitch h1 .hero {
+  text-indent: -999em;
+  width: 600px;
+  height: 180px;
+  background: url("images/text_img_edifice_600x180.png") no-repeat;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+  border-bottom: 4px double #fff;
+  display: block;
+}
+/* line 151, style.scss */
+#content .pitch h1 .tagline {
+  text-indent: -999em;
+  width: 547px;
+  height: 54px;
+  display: block;
+  margin: 0 auto .5em;
+  background: url("images/text_img_railsway_547x54.png") no-repeat;
+}
+/* line 160, style.scss */
+#content .pitch .btn_wrapper {
+  text-align: center;
+}
+/* line 162, style.scss */
+#content .pitch .btn_wrapper .btn {
+  font-size: 24px;
+}
+/* line 164, style.scss */
+#content .pitch p {
+  margin-bottom: 2em;
+}
+/* line 168, style.scss */
+#content .explain {
+  padding: 0 60px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+/* line 171, style.scss */
+#content .explain h2 {
+  width: 450px;
+  height: 26px;
+  margin: 0 auto 36px;
+  background: url("images/text_img_really_450x26.png") no-repeat center center;
+  text-indent: -999em;
+  overflow: hidden;
+}
+/* line 179, style.scss */
+#content .explain h3.subtitle {
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  font-size: 15px;
+  margin: 3em 0 1em;
+  font-weight: bold;
+}
+/* line 186, style.scss */
+#content .explain p {
+  margin-bottom: 1em;
+}
+/* line 188, style.scss */
+#content .explain p img {
+  vertical-align: bottom;
+  max-width: 100%;
+  height: auto;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+}
+/* line 193, style.scss */
+#content .explain p img.aligncenter {
+  display: block;
+  margin: 10px auto 15px;
+}
+/* line 197, style.scss */
+#content .explain p img.alignleft {
+  float: left;
+  margin: 10px 0px 15px 0;
+}
+/* line 201, style.scss */
+#content .explain p img.alignright {
+  float: right;
+  margin: 10px 0 15px 10px;
+}
+/* line 205, style.scss */
+#content .explain p img.alignnone {
+  margin: 10px 0 15px;
+}
+/* line 209, style.scss */
+#content .explain p code {
+  font-size: 0.9em;
+}
+/* line 211, style.scss */
+#content .explain dl {
+  margin: 19px 0 21px;
+}
+/* line 213, style.scss */
+#content .explain dl dt, #content .explain dl dd {
+  line-height: 21px;
+  padding: 0 10px;
+  list-style-position: inside;
+}
+/* line 218, style.scss */
+#content .explain dl dt {
+  font-weight: bold;
+  padding: 0 10px;
+}
+/* line 221, style.scss */
+#content .explain dl dd {
+  font-style: italic;
+  padding: 0 20px;
+}
+/* line 225, style.scss */
+#content .explain ul li {
+  list-style-type: disc;
+}
+/* line 226, style.scss */
+#content .explain ol li {
+  list-style-type: decimal;
+}
+/* line 227, style.scss */
+#content .explain ul, #content .explain ol {
+  margin: 1em 0 1.5em;
+}
+/* line 229, style.scss */
+#content .explain ul ul, #content .explain ul ol, #content .explain ol ul, #content .explain ol ol {
+  margin: 0;
+  border-bottom: 0;
+}
+/* line 233, style.scss */
+#content .explain ul li, #content .explain ol li {
+  list-style-position: inside;
+  padding: 0 30px;
+}

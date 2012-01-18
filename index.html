@@ -1,14 +1,94 @@
----
----
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <link rel="stylesheet" href="pygments.css" type="text/css">
+	<meta charset="utf-8" />
+	<title>Edifice for Rails</title>
+	<meta description="" />
+	<meta keywords="" />
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<!--[if IE]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
 </head>
+
 <body>
-  <h1>My GitHub Page</h1>
-  {% highlight ruby %}
-    puts 'this seems to be working fine'
-  {% endhighlight %}
+  	<div id="content">
+
+	  	<a class="logo" href="http://github.com/tmeasday/edifice">
+  	  	<img src="images/logo_edifice_80x93.png" alt="VISIT EDIFICE ON GITHUB" />
+	  	</a>
+
+  	  <div class="pitch">
+      	<h1><span class="hero">Edifice:</span><span class="tagline">CSS &amp; JS the Rails way</span></h1>
+      	<p>Edifice makes your Rails life <span class="color">easier</span>. It's designed to <span class="color">simplify</span> CSS &amp; JS integration in your Rails app by following the principle of <strong>DRY</strong>, less obtrusive markup. Stop writing unnecessary javascript boilerplate, stop wasting time namespacing view CSS and <em>start enjoying rails again.</em></p>
+      	<div class="btn_wrapper">
+        	<a class="btn">View on Github</a>
+      	</div>
+    	</div>
+    	<div class="explain">
+    	  <h2>But really now, what is Edifice?</h2>
+    	  <p><span class="color"><strong>Edifice is a Rails gem</strong></span> that simplifies the way you manage your CSS and Javascript. Install it by typing <code>gem install edifice</code></p>
+    	  
+    	  
+    	  <img src="" alt="" />
+    	  
+    	  
+    	  <h3 class="subtitle color">Namespacing CSS</h3>
+    	  <p>Automatically generate a namespace for each of your views. Use it to fine tune styling on a page-by-page basis without worrying about altering your global names. After all thinking of names is hard, why not just use the view's name? Let <a href="https://github.com/tmeasday/edifice">edifice</a> do it for you:</p>
+    	  <span>Before:</span>
+    	  <pre>&lt;div id="user_profile"&gt;&lt;/div&gt;</pre>
+    	  <span>After:</span>
+    	  <pre>&lt;body class="c_users v_show l_application"&gt;</pre>
+    	  
+    	  
+    	  
+    	  <h3 class="subtitle color">Page-level Javascript</h3>
+    	  <p>Condensing your sites javascript assets into one master file is a performance requirement these days. It gets pretty confusing when you only want to run certain bits of code on different pages. Edifice solves this problem by enabling view specific JS.</p>
+    	  <span>Just add:</span>
+    	  <pre>userShow = {
+    	    onReady: function() {
+    	      alert('The users#show page is ready!');
+    	    }
+    	  }</pre>
+  	    <p>The rest will be taken care of.</p>
+  	    
+  	    
+  	    <h3 class="subtitle color">Site-wide Javascript</h3>
+  	    <p>Reluctant to separate your JS by views? Build Edifice widgets &amp; traits to unobtrusively hook up standard behaviors for you</p>
+  	    <span>Just add:</span>
+  	    <pre>&lt;select name="country" data-widget="styled_select"&gt;&lt;option&gt;&lt;/select&gt;<br/>&lt;input type="text" name="zipcode" data-trait="only_allow_numbers"&gt;&lt;/input&gt;</pre>
+  	    
+  	    
+  	    
+  	    <h3 class="subtitle color">Avoid form boilerplate</h3>
+  	    <p>Tired of writing standard code to deal with form errors? Wondering why rails' unobtrusive remote form's don't handle it for you? Let (edifice-forms)[https://github.com/tmeasday/edifice-forms] help you out:</p>
+  	    <span>Just add:</span>
+  	    <pre>&lt;form data-remote="true" data-form="show_errors"&gt;</pre>
+  	    
+  	    
+  	    <h3 class="subtitle color">Easy non-persistent forms</h3>
+  	    <p>Need a form that's not based on a DB-backed model? Still want to validate fields and write simple controllers? Yep, (edifice-forms)[https://github.com/tmeasday/edifice-forms] can help with that:</p>
+  	    <span>Just add:</span>
+  	    <pre>class Feedback &lt; Edifice::Forms::FormModel
+  attr_accessor :message
+  attr_accessor :email
+  	    
+  validates :email, :presence =&gt; true, :format =&gt; {:with =&gt; /^.+@.+\..+$/}
+  validates :message, :presence =&gt; true
+  	    
+  def save
+    SelfMailer.feedback(self).deliver
+  end
+end
+
+class FeedbacksController &lt; ApplicationController
+  def create
+    respond_with @feedback = Feedback.create params[:feedback]
+  end
+end
+&lt;%= form_for @feedback do |f|</pre>
+  	      	    
+    	</div>
+  	</div>
 </body>
 </html>

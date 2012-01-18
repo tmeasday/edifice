@@ -1,0 +1,12 @@
+// Base paragraph formatting 
+@mixin stdtype{
+  font-family: Georgia, serif;;
+}
+@mixin stdfont{
+  font-size: 15px;
+  line-height: 24px;
+}
+@mixin osfont{
+  font-size: 14px;
+  line-height: 1.5em;
+}
