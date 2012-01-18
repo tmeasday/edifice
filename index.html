@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -109,8 +111,8 @@
           attr_accessor :message
           attr_accessor :email
         
-          validates :email, :presence =&gt; true, :format =&gt; {:with =&gt; /^.+@.+\..+$/}
-          validates :message, :presence =&gt; true
+          validates :email, :presence => true, :format => {:with => /^.+@.+\..+$/}
+          validates :message, :presence => true
         
           def save
             SelfMailer.feedback(self).deliver
