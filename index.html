@@ -27,11 +27,9 @@
     	</div>
     	<div class="explain">
     	  <h2>But really now, what is Edifice?</h2>
-    	  <p><span class="color"><strong>Edifice is a Rails gem</strong></span> that simplifies the way you manage your CSS and Javascript. Add it to your <code>Gemfile</code>:
-  	    </p>
-{% highlight ruby %}
-gem 'edifice'
-{% endhighlight %}    	    
+    	  <p><span class="color"><strong>Edifice is a Rails gem</strong></span> that simplifies the way you manage your CSS and Javascript. <a href="http://github.com/tmeasday/edifice">Edifice</a> is the part they left out of Rails; it bridges the gap and makes your JS/CSS as elegant as your ruby.</p>
+    	  
+    	  <p><a href="http://github.com/tmeasday/edifice-forms">Edifice-forms</a> and <a href="http://github.com/tmeasday/edifice-widgets">edifice-widgets</a> are companion gems that improve Rails' remote forms and unobtrusive javascript.</p>
     	  
     	  <h3 class="subtitle color">Namespacing CSS</h3>
     	  <p>Automatically generate a namespace for each of your views. Use it to fine tune styling on a page-by-page basis without worrying about altering your global names. After all thinking of names is hard, why not just use the view's name? Let <a href="https://github.com/tmeasday/edifice">edifice</a> handle that for you:</p>
@@ -89,7 +87,7 @@ userShow = {
   	    <div class="point">  	    
     	    <img src="images/icon_check_120x120.png" alt="Simple forms with Edifice" class="check" /> 
     	    <h3 class="subtitle color">Avoid form boilerplate</h3>
-    	    <p>Tired of writing standard code to deal with form errors? Wondering why rails' unobtrusive remote form's don't handle it for you? Let
+    	    <p>Tired of writing standard JS code to deal with form validation errors? Wondering why rails' UJS remote forms don't handle it for you? Let
     	      <a href="https://github.com/tmeasday/edifice-forms">edifice-forms</a> help you out:</p>
     	    <span>Just add:</span>
   
@@ -97,38 +95,15 @@ userShow = {
 <form data-remote="true" data-form="show_errors">
 {% endhighlight %}
   
-          <p>And things will work just as you might expect.</p>
+          <p>And things will just work&#8482;.</p>
         </div>
         
-      <div class="point nomargin">
-  	    <h3 class="subtitle color">Easy non-persistent forms</h3>
-  	    <p>Need a form that's not based on a DB-backed model? Still want to validate fields and write simple controllers? Yep, edifice-forms can help with that too:</p>
-  	    <span>Just add:</span>
-{% highlight ruby %}
-class Feedback < Edifice::Forms::FormModel
-  attr_accessor :message
-  attr_accessor :email
-
-  validates :email, :presence => true, :format => {:with => /^.+@.+\..+$/}
-  validates :message, :presence => true
-
-  def save
-    SelfMailer.feedback(self).deliver
-  end
-end
-
-class FeedbacksController < ApplicationController
-  def create
-    respond_with @feedback = Feedback.create params[:feedback]
-  end
-end
-{% endhighlight %}
-
-        In your views, <code>@feedback</code> is just like a normal model:
-{% highlight erb %}
-  <%= form_for @feedback do |f| %>
-{% endhighlight %}
-</div>
+        <div class="point nomargin">
+    	    <h3 class="subtitle color">Check it out</h3>
+          <p>There's more! View the full documentation and instructions on <a href="https://github.com/tmeasday/edifice">github</a>.
+          </p>
+        </div>
+        
       <img src="images/icon_rails_120x120.png" alt="Rails 3+" class="rails" />  	      	    
       <p class="colophon">Edifice is crafted by <a href="http://twitter.com/tmeasday" rel="me">@tmeasday</a>, <a href="http://twitter.com/zolatme" rel="me">@zolatme</a>, and <a href="http://twitter.com/domyen" rel="me">@domyen</a>. It's released under the <a href="http://www.opensource.org/licenses/MIT">MIT license</a><br/>See it in action on <a href="http://bindle.me">Bindle.me</a></p>
       </div>
