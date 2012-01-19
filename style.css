@@ -139,11 +139,11 @@ a, button {
   -o-transition: color 500ms ease;
   transition: color 500ms ease;
   cursor: pointer;
-  color: #66ccff;
+  color: #0099cc;
 }
 /* line 4, stylesheets/include/links/_textlink.scss */
 a:hover, button:hover {
-  color: #3399ff;
+  color: #006699;
 }
 /* line 5, stylesheets/include/links/_textlink.scss */
 a:active, button:active {

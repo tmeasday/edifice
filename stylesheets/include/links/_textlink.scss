@@ -1,7 +1,7 @@
 @mixin stdlink{
   cursor: pointer;
-  color: #66ccff;
-  &:hover{color: #3399ff;}
+  color: #0099cc;
+  &:hover{color: #006699;}
   &:active{color: #555;}
 }
 @mixin nolink($color: #333){
