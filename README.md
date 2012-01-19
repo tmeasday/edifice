@@ -7,6 +7,7 @@ Installation
 ------------
 
 To install, simply add to your Gemfile:
+
 ```ruby
 gem 'edifice'
 ```
