@@ -1,7 +1,7 @@
 Edifice
 =======
 
-Edifice.js is a rails gem for integrating your JS + CSS more closely with your Rails 3 workflow. There are two closely related gems--(edifice-forms)[/tmeasday/edifice-forms] and (edifice-widgets)[/tmeasday/edifice-widgets]--which do not rely on, but complement it well.
+Edifice.js is a rails gem for integrating your JS + CSS more closely with your Rails 3 workflow. There are two closely related gems--[edifice-forms](/tmeasday/edifice-forms) and [edifice-widgets](/tmeasday/edifice-widgets)--which do not rely on, but complement it well.
 
 Installation
 ------------
