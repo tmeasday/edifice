@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rails31</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= edifice_meta_tags %>
+</head>
+<body class="<%= edifice_body_classes %>">
+
+<%= yield %>
+
+</body>
+</html>

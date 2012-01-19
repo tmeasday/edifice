@@ -1,0 +1,239 @@
+// basic includes that we need in every file
+$experimental-support-for-svg: true;
+
+@import 'compass/css3';
+@import 'compass/reset';
+@import 'stylesheets/include/paragraphs';
+@import 'stylesheets/include/helpers';
+@import 'stylesheets/include/links/onset';
+@import 'stylesheets/include/links/textlink';
+
+html {
+  height: 100%;
+}
+body {
+  backgroundround: transparent;
+  text-align: center;
+  color: #333;
+  height: 100%;
+  @include stdtype;
+  font-size: 15px;
+  line-height: 1.5em;
+  #content {
+    text-align: left;
+    @include clearfix;
+  }
+}
+h1,h2,h3,h4,h5,h6{ line-height: 1.5em;}
+h1 { font-size: 36px;} 
+h2 { font-size: 24px;}
+h3{ font-size: 21px;}
+h4{ font-size: 18px;}
+h5{ font-size: 16px;}
+h6{ font-size: 14px;}
+
+
+a, button {
+  outline: none;
+  text-decoration: none;
+  font-size: inherit;
+  font-family: inherit;
+  @include transition(color 500ms ease);
+  @include stdlink;
+  &.btn{
+    @include global_btn;
+    background: #ff6633;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    @include border-radius(5px);
+    &:hover{}
+    &:active{
+      @include box-shadow(rgba(0,0,0,.3) 0 3px 7px 0 inset);
+    }
+  }
+}
+input, textarea{
+  @include stdtype;
+  moz-appearance:none;
+  -webkit-appearance:none;
+  outline:0;
+}
+
+
+img { -ms-interpolation-mode:bicubic; }
+
+b, strong{
+  font-weight: bold;
+}
+small{
+  font-size: .8em;  
+}
+sub, sup{
+  position: relative;
+  font-size: .8em;
+}
+sub{
+  bottom: -.2em;
+}
+sup{
+  top: -.2em;
+}
+i, em {
+  font-style: italic;
+}
+u{
+  text-decoration: underline;
+}
+del{
+  text-decoration: line-through;
+}
+blockquote {
+  position:relative;
+  color: #444;
+  clear: both;
+  p {padding-left:30px;}
+}
+code, kbd, samp, tt, pre {
+  font-family:"Andale Mono", "Monaco", monospace;
+}
+pre{
+  white-space: pre;
+  padding:10px;
+  font-size: 12px;
+  line-height: 18px;
+  overflow: auto;
+  margin: 9px 0 18px;
+  background:rgba(255, 255, 221, .9);
+  border-left: 3px solid #ffff99;
+}
+p + pre{
+  margin:20px 0 30px;
+}
+.color{
+  color: #ff3300;
+}
+
+//Begin layout
+#content{
+  width: 720px;
+  margin: 50px auto;
+  position: relative;
+  .logo{
+    font-size: 18px;
+    @include position(absolute, 4em, auto, auto, -120px, 120px);
+    @include box-sizing(border-box);
+    padding: 20px;
+    @include border-radius(10px 0 0 10px);
+    background: #ff6633;
+    @include box-shadow(rgba(0,0,0,.3) -4px 0px 7px -4px inset);
+  }
+  .pitch {
+    @include clearfix;
+    background: #66ccff;
+    font-size:  18px;
+    line-height: 1.5em;
+    padding: 4em 60px;
+    margin-bottom: 4em;
+    h1{
+      overflow: hidden;
+      .hero{
+        text-indent: -999em;
+        width: 600px;
+        height: 180px;
+        background: url('images/text_img_edifice_600x180.png') no-repeat;
+        padding-bottom: 1em;
+        margin-bottom: 1em;
+        border-bottom: 4px double #fff;
+        display: block;
+      }
+      .tagline{
+        text-indent: -999em;
+        width: 547px;
+        height: 54px;
+        display: block;
+        margin: 0 auto .5em;
+        background: url('images/text_img_railsway_547x54.png') no-repeat;
+      }
+    }
+    .btn_wrapper{
+      text-align: center;
+      .btn{font-size: 24px;}
+    }
+    p{
+      margin-bottom: 2em;
+    }
+  }//end pitch
+  .explain{//being explain
+    padding: 0 60px;
+    @include box-sizing(border-box);
+    h2{
+      width: 450px;
+      height: 26px;
+      margin: 0 auto 18px*2;
+      background: url('images/text_img_really_450x26.png') no-repeat center center;
+      text-indent: -999em;
+      overflow: hidden;
+    }
+    h3.subtitle{
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      font-size: 15px;
+      margin: 3em 0 1em;
+      font-weight: bold;
+    }
+    p{ 
+      margin-bottom: 1em;
+      img {
+        vertical-align:bottom;
+        max-width: 100%;
+        height: auto;
+        @include border-radius(3px);
+        &.aligncenter{
+          display: block;
+          margin: 10px auto 15px;
+        }
+        &.alignleft{
+          float: left;
+          margin: 10px 0px 15px 0;
+        }
+        &.alignright{
+          float: right;
+          margin: 10px 0 15px 10px;
+        }
+        &.alignnone{
+          margin: 10px 0 15px;
+        }
+      }
+      code {font-size:0.9em;}
+    }
+    dl{
+      margin:19px 0 21px;
+      dt, dd {
+        line-height:21px;
+        padding:0 10px;
+        list-style-position:inside;
+      }
+      dt{
+        font-weight:bold;padding:0 10px;
+      }
+      dd{
+        font-style:italic;padding:0 20px;
+      }
+    }
+    ul li {list-style-type:disc;}
+    ol li {list-style-type:decimal;}
+    ul, ol {
+      margin:1em 0 1.5em;
+      ul, ol{
+        margin:0;
+        border-bottom:0;
+      }
+      li {
+        list-style-position:inside;
+        padding:0 30px;
+      }
+    }
+  }//end explain
+}
