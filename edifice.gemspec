@@ -22,5 +22,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rake'
   s.add_development_dependency 'rails'
   s.add_development_dependency 'rspec-rails'
-  s.add_development_dependency 'webrat'
+  s.add_development_dependency 'capybara'
+  s.add_development_dependency 'jquery-rails'
 end

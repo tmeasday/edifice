@@ -1,3 +1,4 @@
 Rails31::Application.routes.draw do
-  resources :users
+  match "test/base" => 'test#base'
+  match "test/empty" => 'test#empty'
 end
