@@ -8,9 +8,9 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Tom Coleman", "Zoltan Olah", "Joe Dollard"]
   s.email       = ["tom@thesnail.org", "zol@me.com", "jdollard@gmail.com"]
-  s.homepage    = "http://github.com/tmeasday/edifice"
-  s.summary     = %q{Ediface is a Javascript framework released as a rails plugin.}
-  s.description = %q{The idea here is to communicate which view is rendering to the javascript so that we can call the correct javascript files in an automagical way.}
+  s.homepage    = "http://edifice-rails.com"
+  s.summary     = %q{Edifice is a Rails gem that simplifies the way you manage your CSS and Javascript.}
+  s.description = %q{Edifice makes your Rails life easier. It's designed to simplify CSS & JS integration in your Rails app by following the principle of DRY, less obtrusive markup. Stop writing unnecessary javascript boilerplate, stop wasting time namespacing view CSS and start enjoying rails again..}
 
   s.rubyforge_project = "edifice"
 
