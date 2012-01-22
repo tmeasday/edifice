@@ -79,4 +79,4 @@ Alternatively you could define `onLoad` (which fires on `window.load`), or nothi
 License
 -------
 
-Edifice is crafted by [Percolate Studio](http://percolatestudio.com) and released under the [MIT license](www.opensource.org/licenses/MIT)
+[Edifice](http://edifice-rails.com) is crafted by [Percolate Studio](http://percolatestudio.com) and released under the [MIT license](www.opensource.org/licenses/MIT)
