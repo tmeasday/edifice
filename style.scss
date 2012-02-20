@@ -136,26 +136,23 @@ p + pre{
     line-height: 1.5em;
     padding: 4em 60px;
     margin-bottom: 4em;
-    h1{
+    .hero{
+      text-indent: -999em;
+      width: 600px;
+      height: 180px;
+      background: url('images/text_img_edifice_600x180.gif') no-repeat;
+      padding-bottom: 1em;
+      margin-bottom: 1em;
+      border-bottom: 4px double #fff;
+    }      
+    .tagline{
+      text-indent: -999em;
       overflow: hidden;
-      .hero{
-        text-indent: -999em;
-        width: 600px;
-        height: 180px;
-        background: url('images/text_img_edifice_600x180.gif') no-repeat;
-        padding-bottom: 1em;
-        margin-bottom: 1em;
-        border-bottom: 4px double #fff;
-        display: block;
-      }
-      .tagline{
-        text-indent: -999em;
-        width: 547px;
-        height: 54px;
-        display: block;
-        margin: 0 auto .5em;
-        background: url('images/text_img_railsway_547x54.png') no-repeat;
-      }
+      width: 547px;
+      height: 54px;
+      display: block;
+      margin: 0 auto .5em;
+      background: url('images/text_img_railsway_547x54.png') no-repeat;
     }
     .btn_wrapper{
       text-align: center;
