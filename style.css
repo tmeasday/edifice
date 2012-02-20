@@ -336,15 +336,12 @@ p + pre {
 }
 /* line 139, style.scss */
 #content .pitch .hero {
-  text-indent: -999em;
-  width: 600px;
-  height: 180px;
-  background: url("images/text_img_edifice_600x180.gif") no-repeat;
+  overflow: hidden;
   padding-bottom: 1em;
   margin-bottom: 1em;
   border-bottom: 4px double #fff;
 }
-/* line 148, style.scss */
+/* line 145, style.scss */
 #content .pitch .tagline {
   text-indent: -999em;
   overflow: hidden;
@@ -354,26 +351,26 @@ p + pre {
   margin: 0 auto .5em;
   background: url("images/text_img_railsway_547x54.png") no-repeat;
 }
-/* line 157, style.scss */
+/* line 154, style.scss */
 #content .pitch .btn_wrapper {
   text-align: center;
 }
-/* line 159, style.scss */
+/* line 156, style.scss */
 #content .pitch .btn_wrapper .btn {
   font-size: 24px;
 }
-/* line 161, style.scss */
+/* line 158, style.scss */
 #content .pitch p {
   margin-bottom: 2em;
 }
-/* line 165, style.scss */
+/* line 162, style.scss */
 #content .explain {
   padding: 0 60px;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
 }
-/* line 168, style.scss */
+/* line 165, style.scss */
 #content .explain h2 {
   width: 450px;
   height: 26px;
@@ -382,7 +379,7 @@ p + pre {
   text-indent: -999em;
   overflow: hidden;
 }
-/* line 176, style.scss */
+/* line 173, style.scss */
 #content .explain h3.subtitle {
   text-transform: uppercase;
   letter-spacing: .05em;
@@ -390,21 +387,21 @@ p + pre {
   margin: 3em 0 1em;
   font-weight: bold;
 }
-/* line 183, style.scss */
+/* line 180, style.scss */
 #content .explain p {
   margin-bottom: 1em;
 }
-/* line 185, style.scss */
+/* line 182, style.scss */
 #content .explain p code {
   font-size: 0.9em;
 }
-/* line 186, style.scss */
+/* line 183, style.scss */
 #content .explain p.colophon {
   text-align: center;
   font-size: .8em;
   color: #999;
 }
-/* line 192, style.scss */
+/* line 189, style.scss */
 #content .explain .point {
   min-height: 0;
   margin-left: 160px;
@@ -418,62 +415,62 @@ p + pre {
   height: 0;
   font-size: 0;
 }
-/* line 195, style.scss */
+/* line 192, style.scss */
 #content .explain .point.nomargin {
   margin-left: 0px;
 }
-/* line 197, style.scss */
+/* line 194, style.scss */
 #content .explain img {
   margin: 1em;
 }
-/* line 199, style.scss */
+/* line 196, style.scss */
 #content .explain img.rails {
   display: block;
   margin: 3em auto 1em;
 }
-/* line 203, style.scss */
+/* line 200, style.scss */
 #content .explain img.globe, #content .explain img.page, #content .explain img.check {
   float: left;
   margin: 0em 2em 1em -160px;
 }
-/* line 208, style.scss */
+/* line 205, style.scss */
 #content .explain dl {
   margin: 19px 0 21px;
 }
-/* line 210, style.scss */
+/* line 207, style.scss */
 #content .explain dl dt, #content .explain dl dd {
   line-height: 21px;
   padding: 0 10px;
   list-style-position: inside;
 }
-/* line 215, style.scss */
+/* line 212, style.scss */
 #content .explain dl dt {
   font-weight: bold;
   padding: 0 10px;
 }
-/* line 218, style.scss */
+/* line 215, style.scss */
 #content .explain dl dd {
   font-style: italic;
   padding: 0 20px;
 }
-/* line 222, style.scss */
+/* line 219, style.scss */
 #content .explain ul li {
   list-style-type: disc;
 }
-/* line 223, style.scss */
+/* line 220, style.scss */
 #content .explain ol li {
   list-style-type: decimal;
 }
-/* line 224, style.scss */
+/* line 221, style.scss */
 #content .explain ul, #content .explain ol {
   margin: 1em 0 1.5em;
 }
-/* line 226, style.scss */
+/* line 223, style.scss */
 #content .explain ul ul, #content .explain ul ol, #content .explain ol ul, #content .explain ol ol {
   margin: 0;
   border-bottom: 0;
 }
-/* line 230, style.scss */
+/* line 227, style.scss */
 #content .explain ul li, #content .explain ol li {
   list-style-position: inside;
   padding: 0 30px;
