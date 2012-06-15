@@ -5,8 +5,6 @@
   * @author Joe Dollard
   */
 
-jQuery.noConflict();
-
 /** 
   @name $.fn 
   @namespace
